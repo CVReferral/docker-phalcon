@@ -3,9 +3,8 @@ FROM mileschou/phalcon:7.1-apache
 MAINTAINER Thanh Huynh <huynhbathanh@gmail.com>
 
 RUN /usr/sbin/a2enmod rewrite
-ADD 000-phalcon.conf /etc/apache2/sites-available/
-ADD 001-phalcon-ssl.conf /etc/apache2/sites-available/
-RUN /usr/sbin/a2dissite '*' && /usr/sbin/a2ensite 000-phalcon 001-phalcon-ssl
+ADD ./vhost/000-phalcon.conf /etc/apache2/sites-available/
+RUN /usr/sbin/a2dissite '*' && /usr/sbin/a2ensite 000-phalcon
 
 RUN apt-get update && apt-get install -y \
     zlib1g-dev \
